@@ -108,7 +108,7 @@ namespace eCommerce_API
 
             app.UseSwagger();
             app.UseSwaggerUI(options => {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "eCom_Management");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "eCom_api_rst_pro");
             });
 
             app.UseCors(builder => builder

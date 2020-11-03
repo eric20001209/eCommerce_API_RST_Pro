@@ -357,7 +357,7 @@ namespace eCommerce_API.Controllers
             return Ok(finalList);
         }
 
-        public SpecialItemListDto specialList([FromBody] itemFilterDto filter, [FromQuery] Pagination paging)
+        private SpecialItemListDto specialList([FromBody] itemFilterDto filter, [FromQuery] Pagination paging)
         {
             _context.ChangeTracker.QueryTrackingBehavior = Microsoft.EntityFrameworkCore.QueryTrackingBehavior.NoTracking;
 
