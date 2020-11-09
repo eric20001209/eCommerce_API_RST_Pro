@@ -71,7 +71,8 @@ namespace eCommerce_API
 
             //config automapper
             //services.AddAutoMapper(typeof(Startup));
-
+            //register seeder
+            services.AddScoped<Seeder>();
             services.AddTransient<FreightContext>();
             services.AddTransient<iMailService, MailService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -81,7 +82,7 @@ namespace eCommerce_API
                 options.SwaggerDoc("v1",
                 new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "eCom API",
+                    Title = "eCom API Rst Pro",
                     Description = " eCom API Swagger",
                     Version = "v1"
                 });
@@ -90,7 +91,7 @@ namespace eCommerce_API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,  rst374_cloud12Context context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,  rst374_cloud12Context context, Seeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -106,6 +107,7 @@ namespace eCommerce_API
             app.UseDefaultFiles();
             app.UseHttpsRedirection();
 
+            seeder.Seeding().Wait();
             app.UseSwagger();
             app.UseSwaggerUI(options => {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "eCom_api_rst_pro");

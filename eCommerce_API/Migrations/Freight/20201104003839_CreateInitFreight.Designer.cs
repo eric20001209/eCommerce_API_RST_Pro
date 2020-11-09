@@ -10,8 +10,8 @@ using eCommerce_API.Data;
 namespace eCommerce_API_RST.Migrations.Freight
 {
     [DbContext(typeof(FreightContext))]
-    [Migration("20200607234624_InitialCreateAsianMart")]
-    partial class InitialCreateAsianMart
+    [Migration("20201104003839_CreateInitFreight")]
+    partial class CreateInitFreight
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

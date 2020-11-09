@@ -19,47 +19,47 @@ namespace eCommerce_API_RST.Migrations.Freight
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("eCommerce_API.Models.FreightSettings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //modelBuilder.Entity("eCommerce_API.Models.FreightSettings", b =>
+            //    {
+            //        b.Property<int>("Id")
+            //            .ValueGeneratedOnAdd()
+            //            .HasColumnName("id")
+            //            .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool?>("Active")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("active")
-                        .HasDefaultValueSql("((1))");
+            //        b.Property<bool?>("Active")
+            //            .IsRequired()
+            //            .ValueGeneratedOnAdd()
+            //            .HasColumnName("active")
+            //            .HasDefaultValueSql("((1))");
 
-                    b.Property<decimal>("FreeshippingActiveAmount")
-                        .HasColumnName("freeshipping_active_amount")
-                        .HasColumnType("money");
+            //        b.Property<decimal>("FreeshippingActiveAmount")
+            //            .HasColumnName("freeshipping_active_amount")
+            //            .HasColumnType("money");
 
-                    b.Property<decimal>("Freight")
-                        .HasColumnName("freight")
-                        .HasColumnType("money");
+            //        b.Property<decimal>("Freight")
+            //            .HasColumnName("freight")
+            //            .HasColumnType("money");
 
-                    b.Property<decimal>("FreightRangeEnd1");
+            //        b.Property<decimal>("FreightRangeEnd1");
 
-                    b.Property<decimal>("FreightRangeEnd2");
+            //        b.Property<decimal>("FreightRangeEnd2");
 
-                    b.Property<decimal>("FreightRangeEnd3");
+            //        b.Property<decimal>("FreightRangeEnd3");
 
-                    b.Property<decimal>("FreightRangeStart1");
+            //        b.Property<decimal>("FreightRangeStart1");
 
-                    b.Property<decimal>("FreightRangeStart2");
+            //        b.Property<decimal>("FreightRangeStart2");
 
-                    b.Property<decimal>("FreightRangeStart3");
+            //        b.Property<decimal>("FreightRangeStart3");
 
-                    b.Property<string>("Region")
-                        .HasColumnName("region")
-                        .HasMaxLength(250);
+            //        b.Property<string>("Region")
+            //            .HasColumnName("region")
+            //            .HasMaxLength(250);
 
-                    b.HasKey("Id");
+            //        b.HasKey("Id");
 
-                    b.ToTable("freight_settings");
-                });
+            //        b.ToTable("freight_settings");
+            //    });
 
             modelBuilder.Entity("eCommerce_API.Models.Settings", b =>
                 {

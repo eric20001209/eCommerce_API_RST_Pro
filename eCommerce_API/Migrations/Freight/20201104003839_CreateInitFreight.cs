@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eCommerce_API_RST.Migrations.Freight
 {
-    public partial class addfrieighRange : Migration
+    public partial class CreateInitFreight : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,39 +29,7 @@ namespace eCommerce_API_RST.Migrations.Freight
                     table.PrimaryKey("PK_freight_settings", x => x.id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "settings",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    cat = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    name = table.Column<string>(unicode: false, maxLength: 64, nullable: true),
-                    value = table.Column<string>(unicode: false, maxLength: 1024, nullable: true),
-                    description = table.Column<string>(unicode: false, maxLength: 1024, nullable: true),
-                    hidden = table.Column<bool>(nullable: false, defaultValueSql: "(0)"),
-                    bool_value = table.Column<bool>(nullable: false, defaultValueSql: "(0)"),
-                    access = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_settings", x => x.id);
-                });
 
-            migrationBuilder.CreateIndex(
-                name: "IDX_settings_cat",
-                table: "settings",
-                column: "cat");
-
-            migrationBuilder.CreateIndex(
-                name: "IDX_settings_hidden",
-                table: "settings",
-                column: "hidden");
-
-            migrationBuilder.CreateIndex(
-                name: "IDX_settings_name",
-                table: "settings",
-                column: "name");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -69,8 +37,6 @@ namespace eCommerce_API_RST.Migrations.Freight
             migrationBuilder.DropTable(
                 name: "freight_settings");
 
-            migrationBuilder.DropTable(
-                name: "settings");
         }
     }
 }

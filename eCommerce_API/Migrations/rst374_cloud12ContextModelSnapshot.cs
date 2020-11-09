@@ -1599,67 +1599,6 @@ namespace eCommerce_API_RST.Migrations
                     b.ToTable("code_relations");
                 });
 
-            modelBuilder.Entity("eCommerce_API.Models.Dispatch", b =>
-                {
-                    b.Property<int>("Kid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("kid")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Branch")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("branch")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<int>("Code")
-                        .HasColumnName("code");
-
-                    b.Property<DateTime?>("DateReceived")
-                        .HasColumnName("date_received")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("Id")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .HasColumnName("name")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
-
-                    b.Property<double>("Qty")
-                        .HasColumnName("qty");
-
-                    b.Property<double?>("QtyReceived")
-                        .HasColumnName("qty_received");
-
-                    b.Property<double>("QtyReceiving")
-                        .HasColumnName("qty_receiving");
-
-                    b.Property<bool>("Received")
-                        .HasColumnName("received");
-
-                    b.Property<DateTime>("RecordDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("record_date")
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<int?>("StaffReceived")
-                        .HasColumnName("staff_received");
-
-                    b.HasKey("Kid");
-
-                    b.HasIndex("Branch")
-                        .HasName("IDX_dispatch_branch");
-
-                    b.HasIndex("Code")
-                        .HasName("IDX_dispatch_code");
-
-                    b.HasIndex("Id")
-                        .HasName("IDX_dispatch_id");
-
-                    b.ToTable("dispatch");
-                });
 
             modelBuilder.Entity("eCommerce_API.Models.EnumTable", b =>
                 {
@@ -2443,247 +2382,6 @@ namespace eCommerce_API_RST.Migrations
                     b.ToTable("product_details");
                 });
 
-            modelBuilder.Entity("eCommerce_API.Models.Purchase", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool?>("AllInStock")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("all_in_stock")
-                        .HasDefaultValueSql("((0))");
-
-                    b.Property<bool>("AlreadySent")
-                        .HasColumnName("already_sent");
-
-                    b.Property<decimal>("AmountPaid")
-                        .HasColumnName("amount_paid")
-                        .HasColumnType("money");
-
-                    b.Property<int>("BranchId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("branch_id")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<int>("BuyerId")
-                        .HasColumnName("buyer_id");
-
-                    b.Property<byte>("Currency")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("currency")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<bool>("CustGst")
-                        .HasColumnName("cust_gst");
-
-                    b.Property<int?>("CustGstPid")
-                        .HasColumnName("cust_gst_pid");
-
-                    b.Property<DateTime>("DateCreate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("date_create")
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<DateTime?>("DateInvoiced")
-                        .HasColumnName("date_invoiced")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("DateReceived")
-                        .HasColumnName("date_received")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("DeliveryDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("delivery_date")
-                        .HasColumnType("datetime")
-                        .HasDefaultValueSql("(getdate())");
-
-                    b.Property<double>("ExchangeRate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("exchange_rate")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<string>("ForInvNumber")
-                        .HasColumnName("for_inv_number")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
-
-                    b.Property<int?>("ForPoNumber")
-                        .HasColumnName("for_po_number");
-
-                    b.Property<decimal>("Freight")
-                        .HasColumnName("freight")
-                        .HasColumnType("money");
-
-                    b.Property<double>("GstRate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("gst_rate")
-                        .HasDefaultValueSql("((0.15))");
-
-                    b.Property<string>("InvNumber")
-                        .HasColumnName("inv_number")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
-
-                    b.Property<string>("Note")
-                        .HasColumnName("note")
-                        .HasColumnType("ntext");
-
-                    b.Property<DateTime?>("PaymentDate")
-                        .HasColumnName("payment_date")
-                        .HasColumnType("datetime");
-
-                    b.Property<byte>("PaymentStatus")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("payment_status")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<int>("PoNumber")
-                        .HasColumnName("po_number");
-
-                    b.Property<DateTime?>("ReceiveDate")
-                        .HasColumnName("receive_date")
-                        .HasColumnType("datetime");
-
-                    b.Property<int?>("SalesInv")
-                        .HasColumnName("sales_inv");
-
-                    b.Property<int?>("SalesOrderId")
-                        .HasColumnName("sales_order_id");
-
-                    b.Property<string>("SentTo")
-                        .HasColumnName("sent_to")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.Property<string>("Shipto")
-                        .HasColumnName("shipto")
-                        .HasMaxLength(255)
-                        .IsUnicode(false);
-
-                    b.Property<bool?>("SnEntered")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("sn_entered")
-                        .HasDefaultValueSql("((0))");
-
-                    b.Property<int>("StaffId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("staff_id")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<int?>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("status")
-                        .HasDefaultValueSql("((1))");
-
-                    b.Property<int?>("StatusOld")
-                        .HasColumnName("status_old");
-
-                    b.Property<int>("SupplierId")
-                        .HasColumnName("supplier_id");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnName("tax")
-                        .HasColumnType("money");
-
-                    b.Property<DateTime?>("TaxDate")
-                        .HasColumnName("tax_date")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime?>("TimeSent")
-                        .HasColumnName("time_sent")
-                        .HasColumnType("datetime");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnName("total")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnName("total_amount")
-                        .HasColumnType("money");
-
-                    b.Property<int>("Type")
-                        .HasColumnName("type");
-
-                    b.Property<string>("WhoSent")
-                        .HasColumnName("who_sent")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BranchId")
-                        .HasName("IDX_purchase_branch_id");
-
-                    b.HasIndex("BuyerId")
-                        .HasName("IDX_purchase_buyer_id");
-
-                    b.HasIndex("Status")
-                        .HasName("IDX_purchase_status");
-
-                    b.HasIndex("SupplierId")
-                        .HasName("IDX_purchase_supplier_id");
-
-                    b.HasIndex("Type")
-                        .HasName("IDX_purchase_type");
-
-                    b.ToTable("purchase");
-                });
-
-            modelBuilder.Entity("eCommerce_API.Models.PurchaseItem", b =>
-                {
-                    b.Property<int>("Kid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("kid")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Code")
-                        .HasColumnName("code");
-
-                    b.Property<bool>("Dispatched")
-                        .HasColumnName("dispatched");
-
-                    b.Property<int>("Id")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .HasColumnName("name")
-                        .HasMaxLength(1024)
-                        .IsUnicode(false);
-
-                    b.Property<decimal>("Price")
-                        .HasColumnName("price")
-                        .HasColumnType("money");
-
-                    b.Property<double>("Qty")
-                        .HasColumnName("qty");
-
-                    b.Property<double>("QtyOrdered")
-                        .HasColumnName("qty_ordered");
-
-                    b.Property<bool>("SnEntered")
-                        .HasColumnName("sn_entered");
-
-                    b.Property<string>("SupplierCode")
-                        .IsRequired()
-                        .HasColumnName("supplier_code")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
-
-                    b.HasKey("Kid");
-
-                    b.HasIndex("Code")
-                        .HasName("IDX_purchase_item_code");
-
-                    b.HasIndex("Id")
-                        .HasName("IDX_purchase_item_id");
-
-                    b.ToTable("purchase_item");
-                });
-
             modelBuilder.Entity("eCommerce_API.Models.Sales", b =>
                 {
                     b.Property<int>("Id")
@@ -2918,23 +2616,23 @@ namespace eCommerce_API_RST.Migrations
                     b.ToTable("ShippingInfo");
                 });
 
-			modelBuilder.Entity("eCommerce_API.Models.Specials", b =>
-				{
-					b.Property<int>("Code")
-						.ValueGeneratedOnAdd()
-						.HasColumnName("code")
-						.HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity("eCommerce_API.Models.Specials", b =>
+                {
+                    b.Property<int>("Code")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("code")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-					b.Property<decimal?>("price")
-						.HasColumnName("price")
-						.HasColumnType("money");
+                    b.Property<decimal?>("price")
+                        .HasColumnName("price")
+                        .HasColumnType("money");
 
-					b.HasKey("Code");
+                    b.HasKey("Code");
 
-					b.ToTable("specials");
-				});
+                    b.ToTable("specials");
+                });
 
-			modelBuilder.Entity("eCommerce_API.Models.StockQty", b =>
+            modelBuilder.Entity("eCommerce_API.Models.StockQty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -3260,38 +2958,6 @@ namespace eCommerce_API_RST.Migrations
                         .HasName("IDX_trans_branch");
 
                     b.ToTable("trans");
-                });
-
-            modelBuilder.Entity("eCommerce_API_RST.Models.MessageBoard", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("id")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnName("content")
-                        .HasMaxLength(1000);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnName("email")
-                        .HasMaxLength(250);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnName("name")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnName("subject")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("message_board");
                 });
 
             modelBuilder.Entity("eCommerce_API.Models.InvoiceFreight", b =>

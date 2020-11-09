@@ -10,8 +10,8 @@ using eCommerce_API.Data;
 namespace eCommerce_API_RST.Migrations
 {
     [DbContext(typeof(rst374_cloud12Context))]
-    [Migration("20200909231001_AddOnLineRetial")]
-    partial class AddOnLineRetial
+    [Migration("20201104002942_CreateInit")]
+    partial class CreateInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -3262,6 +3262,38 @@ namespace eCommerce_API_RST.Migrations
                         .HasName("IDX_trans_branch");
 
                     b.ToTable("trans");
+                });
+
+            modelBuilder.Entity("eCommerce_API_RST.Models.MessageBoard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnName("content")
+                        .HasMaxLength(1000);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnName("email")
+                        .HasMaxLength(250);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnName("subject")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("message_board");
                 });
 
             modelBuilder.Entity("eCommerce_API.Models.InvoiceFreight", b =>
