@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce_API.Data;
 
 namespace eCommerce_API_RST.Migrations
 {
     [DbContext(typeof(rst374_cloud12Context))]
-    partial class rst374_cloud12ContextModelSnapshot : ModelSnapshot
+    [Migration("20201109042021_addOnlineRetail")]
+    partial class addOnlineRetail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
