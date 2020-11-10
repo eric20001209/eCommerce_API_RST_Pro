@@ -43,7 +43,10 @@ namespace eCommerce_API.Controllers
 		public IActionResult getFreightSettings()
 		{
 			/********   Default Oversea Freight   ****************/
-			var freight = _context.Settings.Where(s => s.Name == "freight_unit_price").FirstOrDefault().Value;
+			string freight = "0";
+			var freightSetting = _context.Settings.Where(s => s.Name == "freight_unit_price").FirstOrDefault();
+			if(freightSetting != null)
+				freight = freightSetting.Value;
 			var freightUnitPrice = decimal.Parse(freight ?? "5");
 			//if (freight == null || freight == "")
 			//	freightUnitPrice = 5;
@@ -53,7 +56,8 @@ namespace eCommerce_API.Controllers
 			var sfreeshippingEnabled = "0" ;
 			if (freeshippingEnabled != null)
 				sfreeshippingEnabled =freeshippingEnabled.Value; 
-
+ 
+				
 			var freeshippingInternational = _context.Settings.Where(s => s.Cat == "Freight Options" && s.Name == "free_shipping_international").FirstOrDefault();
 			var sfreeshippingInternational = "0";
 			if (freeshippingInternational != null)
@@ -84,10 +88,10 @@ namespace eCommerce_API.Controllers
 				domesticFrieghtList.Add(new DomesticFreightOptionDto { Id = i, Description = name, Price = dprice }) ;
 			}
 
-			return Ok( new { OverseaFreight = freightUnitPrice ,
+			return Ok( new { OverseaFreight = freightUnitPrice,
 							DomesticFreight = domesticFrieghtList,
-							Freeshipping = freeshippingEnabled.Value,
-							FreeshppingActiveAmount = freeShippingActiveAmount.Value
+							Freeshipping = sfreeshippingEnabled,
+							FreeshppingActiveAmount = sfreeShippingActiveAmount
 			});
 		}
 

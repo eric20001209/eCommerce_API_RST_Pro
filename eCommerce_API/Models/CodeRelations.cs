@@ -139,7 +139,7 @@ namespace eCommerce_API.Models
         public bool? IsBarcodeprice { get; set; }
         public bool? IsIdCheck { get; set; }
         public bool? NoDiscount { get; set; }
-        public double TaxRate { get; set; }
+        public double? TaxRate { get; set; }
         public string TaxCode { get; set; }
         public int? BomId { get; set; }
         public int? Unit { get; set; }
