@@ -40,7 +40,7 @@ namespace eCommerce_API.Dto
         public double CommissionRate { get; set; }
         public double? OuterPack{ get; set; }
         public int InnerPack{ get; set; }
-        public int Moq{ get; set; }
+        public float? Moq{ get; set; }
         //public double LevelRate1 { get; set; }
         //public double LevelRate2 { get; set; }
         //public double LevelRate3 { get; set; }

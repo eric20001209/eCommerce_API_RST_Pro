@@ -117,28 +117,28 @@ namespace eCommerce_API.Services
 				switch (level)
 				{
 					case 1:
-						return item.LevelPrice1;
+						return item.LevelPrice1 ?? 0;
 					case 2:
-						return item.LevelPrice2;
+						return item.LevelPrice2 ?? 0;
 					case 3:
-						return item.LevelPrice3;
+						return item.LevelPrice3 ?? 0;
 					case 4:
-						return item.LevelPrice4;
+						return item.LevelPrice4 ?? 0;
 					case 5:
-						return item.LevelPrice5;
+						return item.LevelPrice5 ?? 0;
 					case 6:
-						return item.LevelPrice6;
+						return item.LevelPrice6 ?? 0;
 					case 7:
-						return item.LevelPrice7;
+						return item.LevelPrice7 ?? 0;
 					case 8:
-						return item.LevelPrice8;
+						return item.LevelPrice8 ?? 0;
 					case 9:
-						return item.LevelPrice9;
+						return item.LevelPrice9 ?? 0;
 					default:
-						return item.Price1;
+						return item.Price1 ?? 0;
 				}
 			}
-			return item.Price1;
+			return item.Price1 ?? 0;
 		}
 
 		public decimal getOnlineShopPrice(int branch_id, int code)
@@ -149,7 +149,7 @@ namespace eCommerce_API.Services
 			var item = _context.CodeRelations.Where(c=>c.Code == code)
 						.Select(c=>new { c.Price1,c.Code}).FirstOrDefault();
 			if (item != null)
-				return item.Price1;
+				return item.Price1 ?? 0;
 			return 0;
 		}
 

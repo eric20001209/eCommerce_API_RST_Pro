@@ -58,7 +58,7 @@ namespace eCommerce_API_RST.Controllers
                      supplier_code = c.SupplierCode,
                      barcode = c.Barcode,
                      moq = (cr.Moq == null || cr.Moq == 0) ? 1 : cr.Moq ?? 1,
-                     inner_pack = cr.InnerPack == 0 ? 1 : cr.InnerPack,
+                     inner_pack =  cr.InnerPack ?? 1, //(cr.InnerPack == 0 ? 1 : cr.InnerPack),
                      outer_pack = (cr.outer_pack == null || cr.outer_pack == 0) ? 1 : cr.outer_pack ?? 1,
                      free_delevery = cr.FreeDelivery,
                      weight = cr.Weight,
