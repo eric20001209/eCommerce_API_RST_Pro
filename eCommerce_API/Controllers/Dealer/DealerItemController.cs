@@ -153,7 +153,7 @@ namespace eCommerce_API_RST.Controllers
                             //   _iitem.getOnlineShopPrice(onlineshopId, c.Code),
                             Barcodes = _iitem.getBarcodes(c.Code),
                             StoreSpecial = _iitem.SpecialSetting(c.Code, _isettings.getOnlineShopId())
-                        });
+                        }).Distinct();
 
 
             var itemCount = count;
@@ -377,7 +377,7 @@ namespace eCommerce_API_RST.Controllers
                  Stock = _iitem.getItemStork(1, c.Code),
                  Barcodes = _iitem.getBarcodes(c.Code),
                  StoreSpecial = _iitem.SpecialSetting(c.Code, _isettings.getOnlineShopId())
-             })
+             }).Distinct()
             .OrderBy(c=>c.Cat)
             .ThenBy(orderExpression)
             .ToList();

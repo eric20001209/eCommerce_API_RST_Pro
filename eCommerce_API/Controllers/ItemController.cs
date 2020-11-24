@@ -213,7 +213,7 @@ namespace eCommerce_API.Controllers
                             Barcodes = _iitem.getBarcodes(c.Code),
                             StoreSpecial = _iitem.SpecialSetting(c.Code, _isettings.getOnlineShopId())
                         }
-                        );
+                        ).Distinct();
 
             var itemCount = count;
             var pageCount = (int)Math.Ceiling(itemCount / (double)pagination.PageSize);
@@ -450,6 +450,7 @@ namespace eCommerce_API.Controllers
                  Barcodes = _iitem.getBarcodes(c.Code),
                  StoreSpecial = _iitem.SpecialSetting(c.Code, _isettings.getOnlineShopId())
              })
+             .Distinct()
             .OrderBy(orderExpression).ToList();
 
             var itemCount = count;
