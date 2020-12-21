@@ -25,6 +25,9 @@ namespace eCommerce_API.Data
         public virtual DbSet<CodeBranch> CodeBranch { get; set; }
         public virtual DbSet<CodeRelations> CodeRelations { get; set; }
         public virtual DbSet<EnumTable> Enum { get; set; }
+        public virtual DbSet<EcomBanner> EcomBanner { get; set; }
+        public virtual DbSet<EcomSetting> EcomSetting { get; set; }
+        public virtual DbSet<EcomTopMenu> EcomTopMenu { get; set; }
         public virtual DbSet<Invoice> Invoice { get; set; }
         public virtual DbSet<InvoiceFreight> InvoiceFreight { get; set; }
         public virtual DbSet<OrderItem> OrderItem { get; set; }
@@ -1465,6 +1468,35 @@ namespace eCommerce_API.Data
                     .HasColumnName("name")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<EcomBanner>(entity =>
+            {
+                entity.ToTable("ecom_banner");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Name).HasColumnName("name");
+                entity.Property(e => e.PicUrl).HasColumnName("pic_url");
+                entity.Property(e => e.HrefUrl).HasColumnName("href_url");
+                entity.Property(e => e.Seq).HasColumnName("seq");
+            });
+
+            modelBuilder.Entity<EcomSetting>(entity =>
+            {
+                entity.ToTable("ecom_setting");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Name).HasColumnName("name");
+                entity.Property(e => e.Value).HasColumnName("value");
+                entity.Property(e => e.Active).HasColumnName("active").HasDefaultValueSql("(1)");
+            });
+
+            modelBuilder.Entity<EcomTopMenu>(entity =>
+            {
+                entity.ToTable("ecom_top_menu");
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Description).HasColumnName("description");
+                entity.Property(e => e.Url).HasColumnName("url");
+                entity.Property(e => e.Seq).HasColumnName("seq");
+                entity.Property(e => e.Active).HasColumnName("active").HasDefaultValueSql("(1)");
             });
 
             modelBuilder.Entity<Invoice>(entity =>
