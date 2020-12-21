@@ -34,7 +34,7 @@ namespace eCommerce_API_RST.Services.Utility
                             </head>
                             <body style='tab-inerval:36pt;'>
                                 <div class='logo'><img width='100' height='100' src='http://dollaritems.co.nz/i/logo.png'></div>
-                                <div class='header'>Dollar items</div>");
+                                <div class='header'>Tax Invoice</div>");
             sb.Append(@"<div class='shipping_gst'>");
             sb.Append(myInvoice.gst);
             sb.Append(@"</div><div class='shipping_name'>  ");

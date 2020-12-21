@@ -100,9 +100,17 @@ namespace eCommerce_API_RST.Controllers
         [HttpGet("freightInfo/{orderId}")]
         public IActionResult freightInfo(int orderId)
         {
-            var po = "eCom_Managment_" + orderId;
-            var freight = _isetting.getFreightInfo(po);   
+            //var po = "eCom_Managment_" + orderId;
+            //var freight = _isetting.getFreightInfo(po);   
+            //return Ok(freight);
+
+            int invoice_number = 0;
+            var order = _iorder.getOrderDetail(orderId);
+            if (order != null)
+                invoice_number = order.inovice_number ?? 0;
+            var freight = _isetting.getFreightInfo(invoice_number);
             return Ok(freight);
+
         }
     }
 }

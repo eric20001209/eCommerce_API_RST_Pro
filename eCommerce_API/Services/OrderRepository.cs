@@ -133,23 +133,37 @@ namespace eCommerce_API_RST.Services
 		{
 			var apiUrl = _config["ApiUrl"];		//supplier url
 			var siteName = _config["SiteName"];     //supplier site name
+													//try
+													//{
+													//	using (var client = new HttpClient())
+													//	{
+													//		client.BaseAddress = new Uri(apiUrl);
+
+			//		var responseTask = client.GetAsync("/"+ siteName + "/api/invoice/freightInfo/" + orderId);
+			//		responseTask.Wait();
+			//		var getResult = responseTask.Result;
+			//		if (getResult.IsSuccessStatusCode)
+			//		{
+			//			var readTask = getResult.Content.ReadAsAsync<List<FreightInfoDto>>();
+			//			readTask.Wait();
+			//			var freightInfoList = readTask.Result;
+			//			return freightInfoList;
+			//		}
+			//	}
+			//}
+			//catch (Exception)
+			//{
+
+			//	throw;
+			//}
 			try
 			{
-				using (var client = new HttpClient())
-				{
-					client.BaseAddress = new Uri(apiUrl);
-
-					var responseTask = client.GetAsync("/"+ siteName + "/api/invoice/freightInfo/" + orderId);
-					responseTask.Wait();
-					var getResult = responseTask.Result;
-					if (getResult.IsSuccessStatusCode)
-					{
-						var readTask = getResult.Content.ReadAsAsync<List<FreightInfoDto>>();
-						readTask.Wait();
-						var freightInfoList = readTask.Result;
-						return freightInfoList;
-					}
-				}
+				int invoice_number = 0;
+				var order = _contextE.Orders.FirstOrDefault(o => o.Id == orderId);
+				if (order != null)
+					invoice_number = order.InvoiceNumber ?? 0;
+				var freight = _isettings.getFreightInfo(invoice_number);
+				return freight;
 			}
 			catch (Exception)
 			{
